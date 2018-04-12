@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-
+<!--written and copyright by Justin Bourbonniere-->
+<!--4/12/2018-->
 <head>
 <Title>Justin's Site</Title>
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
@@ -24,7 +25,7 @@ a{
   margin: 0px 0 -50px 0;
   font-size: 40px;
 }
-
+/*two column layout*/
 .row {
     display: flex;
 }
@@ -34,12 +35,31 @@ a{
     padding: 10px;
 }
 
+@media(max-width:500px){
+  h1{
+    font-size: 45px;
+    margin-top:20px;
+    line-height:40px;
+  }
+  a{
+    font-size: 35px;
+  }
+  /*remove two columns*/
+.row{
+  display:inline;
+}
+.column{
 
-
-
-
-
+}
+body{
+  max-width: 500px;
+}
+}
 </style>
+
+
+
+
 </head>
 
 <body>
@@ -85,7 +105,7 @@ function HobbiesFunc() {
   document.getElementById("pic").style.height="500px";
   document.getElementById("left-pic").style.background = 'url("https://cdn-images-1.medium.com/max/698/1*VPbOo3n5vjvwu5jFUU1mSw.jpeg") no-repeat';
   document.getElementById("left-pic").style.height="500px";
-  document.getElementById("left-pic").style.backgroundSize = "auto";
+  document.getElementById("left-pic").style.backgroundSize = "100% 100%";
 }
 function ContactFunc(){
   document.getElementById("chgtext").innerHTML='<form><label for="Name">Name:</label><input type="text" name="Name" id="Name" /><label for="City">City:</label><input type="text" name="City" id="City" /><br><label for="Email">Email:</label><input type="text" name="Email" id="Email" /><label for="Message">Message:</label><textarea name="Message" rows="2" cols="100" id="Message"></textarea><input type="submit" name="submit" value="Submit" class="submit-button" /></form>';
@@ -95,6 +115,18 @@ function ContactFunc(){
   document.getElementById("left-pic").style.height="500px";
   document.getElementById("left-pic").style.backgroundSize = "100% 100%";
 }
+/*resize contact form if max-width<=500*/
+function myFunction(screen_width) {
+    if (screen_width.matches) { // If media query matches
+        document.getElementById("chgtext").innerHTML='<form><label for="Name">Name:</label><input type="text" name="Name" id="Name" /><br><label for="City">City:</label><input type="text" name="City" id="  City" /><br><label for="Email">Email:</label><input type="text" name="Email" id="Email" /><br><label for="Message">Message:</label><textarea name="Message" rows="2" cols="50" id="Message"></textarea><input type="submit" name="submit" value="Submit" class="submit-button" /></form>';
+    }
+}
+
+var screen_width = window.matchMedia("(max-width: 500px)")
+myFunction(screen_width) // Call listener function at run time
+screen_width.addListener(myFunction) // Attach listener function on state changes
+
+
 
 </script>
 </body>
